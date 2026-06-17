@@ -1,3 +1,5 @@
+import { asset } from "@/lib/utils";
+
 export type FeaturedProject = {
   id: string;
   title: string;
@@ -14,7 +16,7 @@ export type FeaturedProject = {
   links?: { label: string; href: string }[];
 };
 
-export const featuredProjects: FeaturedProject[] = [
+const rawFeaturedProjects: FeaturedProject[] = [
   {
     id: "digital-balance",
     title: "Digital Balance",
@@ -118,6 +120,10 @@ export const featuredProjects: FeaturedProject[] = [
   },
 ];
 
+export const featuredProjects: FeaturedProject[] = rawFeaturedProjects.map(
+  (project) => ({ ...project, image: asset(project.image) }),
+);
+
 export type OtherProject = {
   id: string;
   title: string;
@@ -131,7 +137,7 @@ export type OtherProject = {
   accent: string;
 };
 
-export const otherProjects: OtherProject[] = [
+const rawOtherProjects: OtherProject[] = [
   {
     id: "soundspace",
     title: "SoundSpace",
@@ -227,3 +233,10 @@ export const otherProjects: OtherProject[] = [
     accent: "#7BE05A",
   },
 ];
+
+export const otherProjects: OtherProject[] = rawOtherProjects.map((project) => ({
+  ...project,
+  icon: asset(project.icon),
+  banner: asset(project.banner),
+  screens: project.screens.map(asset),
+}));

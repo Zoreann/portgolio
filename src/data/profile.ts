@@ -1,3 +1,5 @@
+import { asset } from "@/lib/utils";
+
 export type Stat = {
   value: number;
   label: string;
@@ -28,7 +30,7 @@ export const profile = {
     { value: 6, suffix: "+", label: "Design & AI tools" },
     { value: 100, suffix: "%", label: "End-to-end ownership" },
   ] as Stat[],
-  resumeUrl: "/Nazar_Kasianov_Designer_Resume.pdf",
+  resumeUrl: asset("/Nazar_Kasianov_Designer_Resume.pdf"),
 };
 
 export type SocialLink = {
